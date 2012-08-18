@@ -1,0 +1,14 @@
+<%= form_for([@user, @city]) do |f| %>
+<div class='item'>
+  <%= f.label '城市名' %>
+  <%= f.text_field 'name' %>
+</div>
+<div class='item'>
+  <%= f.label '地标' %>
+  <%= f.text_field 'pos_x' %>
+  <%= f.text_field 'pos_y' %>
+</div>
+<div class='item'>
+  <%= f.submit '提交' %>
+ </div> 
+<% end %>

@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+<div class='item'>
+  <%= f.label :name, '用户名'%>
+  <%= f.text_field :name %>
+</div>
+<div class='item'>
+  <%= f.submit '注册' %>
+</div>  
+<% end %>

@@ -1,0 +1,35 @@
+<div id='hd'>
+  <div class='bn'>
+    <% if current_user %>
+      欢迎玩家<span><%= current_user.name %></span>
+      <span><%= link_to '退出', logout_url%></span>
+    <% else %>
+       <span><%= link_to '登陆', login_url %></span>
+       <span><%= link_to '注册', new_user_url %></span>
+    <% end %>
+  </div>  
+</div>  
+<div id='hc'>
+  <% if current_user %>
+    <%= link_to '建造城市', new_user_city_url(current_user), :class => 'btn' %>
+  <% end %>
+  <% if @cities.present? %>
+    <div class='cities'>
+      <% @cities.each do |city| %>
+        <div class='city'>
+	  <% if city.capital? %>
+  	    <h2><a href='<%= user_city_url(@user, city)%>'>首都:<%= city.name %></a></h2>
+	  <% else %>
+   	    <h2><a href='<%= user_city_url(@user, city)%>'><%= city.name %></a></h2>
+	  <% end %>
+	  人口:<span><%= city.human %></span>
+	  食物:<span><%= city.food %></span>
+	  金子:<span><%= city.gold %></span>
+	  税率:<span><%= city.tax_rate %></span>
+	  地标:<span><%= city.pos_x %>, <%= city.pos_y %></span>
+	</div>  
+      <% end %>
+    </div>
+  <% end %>
+  
+</div>  

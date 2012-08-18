@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  human: 1
+  food: 1
+  gold: 1
+  tax_rate: 1.5
+  pos_x: 1
+  pos_y: 1
+  name: MyString
+  capital: false
+  user_id: 1
+
+two:
+  human: 1
+  food: 1
+  gold: 1
+  tax_rate: 1.5
+  pos_x: 1
+  pos_y: 1
+  name: MyString
+  capital: false
+  user_id: 1

@@ -1,0 +1,14 @@
+<%= form_for([@user, @city]) do |f| %>
+<div class='item'>
+  <%= f.label '税率' %>
+  <%= f.text_field :tax_rate %>
+</div>
+<div class='item'>
+  <%= f.label '类型' %>
+  <span>首都:</span><%= f.radio_button :capital, true %>
+  <span>普通城市:</span><%= f.radio_button :capital, false %>
+</div>
+<div class='item'>
+  <%= f.submit '提交' %>
+ </div> 
+<% end %>
