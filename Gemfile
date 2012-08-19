@@ -8,7 +8,11 @@ gem 'rails', '3.2.2'
 # gem 'sqlite3'
 gem 'pg'
 gem "bcrypt-ruby", :require => "bcrypt"
-
+gem 'resque'
+gem 'resque-scheduler', :require => 'resque_scheduler'
+# gem 'whenever', :require => false
+gem 'rufus-scheduler'
+gem 'eventmachine'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -2,7 +2,7 @@
   <div class='bn'>
     <% if current_user %>
       欢迎玩家<span><%= current_user.name %></span>
-      <span><%= link_to '退出', logout_url%></span>
+      <span><%= link_to '退出', ''%></span>
     <% else %>
        <span><%= link_to '登陆', login_url %></span>
        <span><%= link_to '注册', new_user_url %></span>

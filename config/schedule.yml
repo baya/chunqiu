@@ -1,0 +1,24 @@
+'SimpleCity::CapitalProduceFood':
+  every: 9s
+  queue: food
+  description: "首都城市每9秒生产25食物"
+
+'SimpleCity::CityProduceFood':
+  every: 18s
+  queue: food
+  description: "普通城市每18秒生产5食物"
+
+'SimpleCity::CapitalProduceGold':
+  every: 36s
+  queue: gold
+  description: "首都城市每36秒生产5金"
+
+'SimpleCity::CityProduceGold':
+  every: 72s
+  queue: gold
+  description: "普通城市每72秒生产1金"
+
+'SimpleCity::TakeTax':
+  every: 1hr
+  queue: tax
+  description: "每小时对金子征税"

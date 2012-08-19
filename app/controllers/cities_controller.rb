@@ -42,6 +42,7 @@ class CitiesController < ApplicationController
     @city = @user.cities.build(params[:city])
     @city.init_resources
     if @city.save
+      Resque.enqueue_in(5.seconds, SimpleCity::CapitalProduceFood)
       redirect_to user_cities_url(@user)
     else
       render 'new'

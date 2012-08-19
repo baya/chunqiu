@@ -57,3 +57,4 @@ module Chunqiu
     config.assets.version = '1.0'
   end
 end
+require 'simple_city'
