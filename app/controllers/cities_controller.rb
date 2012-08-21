@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CitiesController < ApplicationController
 
   before_filter :find_user
@@ -26,6 +27,7 @@ class CitiesController < ApplicationController
     @city.capital = params[:city][:capital]
     if @city.save
       if @city.capital?
+        # 确保玩家只有一个首都
         @user.disable_other_capital(@city)
       end  
       redirect_to user_cities_url(@user)

@@ -7,6 +7,7 @@ class SoliderQueuesController < ApplicationController
   def new
   end
 
+  # 增加一批新的训练士兵的任务
   def create
     if @city.waiting_solider_queues.count >= 5
       flash[:notice] = '等待接受训练的批次已经达到5批'

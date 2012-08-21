@@ -22,6 +22,7 @@ class City < ActiveRecord::Base
   # 城市的半径
   Rd = 50 * Math.sqrt(2)
 
+  # 初始化资源
   def init_resources
     self.food     = 0.0
     self.human    = 100
@@ -30,6 +31,7 @@ class City < ActiveRecord::Base
     self.capital  = false
   end
 
+  # 征税
   def take_tax
     rest_gold = gold - gold * tax_rate
     self.gold = rest_gold.to_i
