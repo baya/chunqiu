@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
   has_many :cities
 
@@ -10,6 +11,11 @@ class User < ActiveRecord::Base
       next if capital_city == city
       city.update_attributes(:capital => false)
     }
+  end
+
+  # 对方城市
+  def target_cities
+    City.where('user_id != ?', self.id)
   end
   
 end

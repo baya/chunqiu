@@ -58,3 +58,5 @@ module Chunqiu
   end
 end
 require 'simple_city'
+require 'medium_city'
+require 'senor_city'

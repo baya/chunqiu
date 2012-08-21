@@ -21,7 +21,14 @@ a:hover{text-decoration:underline;}
 h1 a:hover, .title a:hover {text-decoration:none;}
 a{text-decoration:none;}
 a.btn{display:block;margin-top:10px;margin-left:400px;}
-
+span.btn{margin-left:40px;}
+.sq{margin-bottom:20px;}
+.ino{margin-bottom:20px;}
+.item{margin:8px;}
+.fights{margin:8px;}
+.htwo{font-size:1.25em;font-weight:bold;}
+.warn{color:red}
+span.bar{margin-right:5px;}
 #content{padding:8px;}
 #content h2{margin:4px 0;}
 #content .city{margin:10px 0;}

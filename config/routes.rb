@@ -8,6 +8,12 @@ Chunqiu::Application.routes.draw do
   end  
   resources :sessions
 
+  scope :path => '/:city_id', :as => 'city' do
+    resources :solider_queues
+    resources :fights
+  end
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

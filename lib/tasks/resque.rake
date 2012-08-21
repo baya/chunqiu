@@ -15,7 +15,7 @@ namespace :resque do
 
     schedule_config = YAML.load_file(rails_root + '/config/schedule.yml')
     Resque.schedule = schedule_config
-
+    Resque.before_fork = Proc.new { ActiveRecord::Base.establish_connection }
 
     # you probably already have this somewhere
     # Resque.redis = 'localhost:6379'

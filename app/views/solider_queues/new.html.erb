@@ -1,0 +1,38 @@
+<div class='flash'>
+  <p><%= flash[:notice] %></p>
+</div>  
+<div class="ino">
+  <h2><%= @city.name %>:训练士兵</h2>
+  <p>金子:<span><%= @city.gold %></span></p>
+  <p>食物:<span><%= @city.h_food %></span></p>
+  <p>长枪兵:<span><%= @city.cqb_soliders.count %></span></p>
+  <p>弓箭手:<span><%= @city.gjs_soliders.count %></span></p>
+  <p>骑兵:<span><%= @city.qb_soliders.count %></span></p>
+</div>
+
+<div class="sq">
+<% if @city.waiting_solider_queues.count > 0 %>
+  <h2>正在训练的士兵队列</h2>
+  <ul>
+  <% @city.waiting_solider_queues.each do |solider_queue| %>
+     <li>士兵数量:<span><%= solider_queue.solider_num %></span>, 种类:<span><%= solider_queue.solider_kind_name %></span>
+       <%= form_tag city_solider_queue_url(@city.id, solider_queue.id), :method => 'delete' do%>
+       <%= submit_tag '撤销训练', :name => nil %>
+       <% end %>
+     </li>
+  <% end %>
+  </ul>
+</div>  
+  
+<% end %>
+
+<%= form_tag city_solider_queues_url do -%>
+  <label>选择兵种:</label>
+  <%= select_tag 'solider[kind]', options_from_collection_for_select(Solider::Kinds, 'code', 'name')%>
+  <label>士兵数量</label>
+  <input type='text' name='solider[num]' />
+  <div>
+    <input type='submit' value='提交'/>
+    <%= link_to '放弃', user_cities_url(current_user) %>
+  </div>
+<% end %>

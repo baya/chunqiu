@@ -1,0 +1,69 @@
+<div class='city'>
+  <h2><%= @city.name%>发起进攻</h2>
+  长枪兵:<span><%= @city.cqb_soliders.count %></span>
+  弓箭手:<span><%= @city.gjs_soliders.count %></span>
+  骑兵:<span><%= @city.qb_soliders.count %></span>
+  <% if @city.fights.w_r_f.present? %>
+  <div class='fights'>
+    <span class="htwo">攻击队伍</span>
+    <ul>
+    <% @city.fights.w_r_f.order('created_at desc').each do |fight| %>
+    <li>
+      目标城市:<span class='bar'><%= fight.target_city.name %></span>
+      作战距离:<span class='bar'><%= fight.distance %></span>
+      行军时间:<span class='bar'><%= fight.move_time %>秒</span>
+      行军速度:<span class='bar'><%= fight.speed %></span>
+      状态:<span class='bar'><%= fight.h_status %></span>
+      活的长枪兵:<span class='bar'><%= fight.cqb_soliders.count %></span>
+      活的弓箭手:<span class='bar'><%= fight.gjs_soliders.count %></span>
+      活的骑兵:<span class='bar'><%= fight.qb_soliders.count %></span>
+      牺牲的长枪兵:<span class='bar'><%= fight.dead_cqb_soliders.count %></span>
+      牺牲的弓箭手:<span class='bar'><%= fight.dead_gjs_soliders.count %></span>
+      牺牲的骑兵:<span><%= fight.dead_qb_soliders.count %></span>
+    </li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+    <% if @city.fights.close.present? %>
+  <div class='fights'>
+    <span class="htwo">已经返城的队伍</span>
+    <ul>
+    <% @city.fights.close.order('created_at desc').each do |fight| %>
+    <li>
+      目标城市:<span class='bar'><%= fight.target_city.name %></span>
+      作战距离:<span class='bar'><%= fight.distance %></span>
+      行军时间:<span class='bar'><%= fight.move_time %>秒</span>
+      行军速度:<span class='bar'><%= fight.speed %></span>
+      状态:<span class='bar'><%= fight.h_status %></span>
+      在伍长枪兵:<span class='bar'><%= fight.cqb_soliders.count %></span>
+      在伍弓箭手:<span class='bar'><%= fight.gjs_soliders.count %></span>
+      在伍骑兵:<span class='bar'><%= fight.qb_soliders.count %></span>
+      牺牲的长枪兵:<span class='bar'><%= fight.dead_cqb_soliders.count %></span>
+      牺牲的弓箭手:<span class='bar'><%= fight.dead_gjs_soliders.count %></span>
+      牺牲的骑兵:<span><%= fight.dead_qb_soliders.count %></span>
+    </li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+<%= form_for [@city, @fight] do |f| %>
+<div class='item'>
+  <label>长枪兵数量</label>
+  <input type='text' name='fight[cqb_num]' />
+</div>
+<div class='item'>
+  <label>弓箭手数量</label>
+  <input type='text' name='fight[gjs_num]' />
+</div>
+<div class='item'>
+  <label>骑兵数量</label>
+  <input type='text' name='fight[qb_num]' />
+</div>
+<div class='item'>
+  选择攻击城市: <%= select 'fight', 'target_city_id', @target_cities.map{|city| [city.name, city.id]}%>
+</div>
+<%= submit_tag '提交' %>
+<%= link_to '放弃', user_cities_url(current_user)%>
+<% end %>

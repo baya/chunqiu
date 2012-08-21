@@ -18,15 +18,30 @@
       <% @cities.each do |city| %>
         <div class='city'>
 	  <% if city.capital? %>
-  	    <h2><a href='<%= user_city_url(@user, city)%>'>首都:<%= city.name %></a></h2>
+  	    <h2>
+	      <a href='<%= user_city_url(@user, city)%>'>首都:<%= city.name %></a>
+	      <% if city.be_attacked? %>
+	        <span class='warn'>攻击警告</span>
+	      <% end %>
+	    </h2>
 	  <% else %>
-   	    <h2><a href='<%= user_city_url(@user, city)%>'><%= city.name %></a></h2>
+   	    <h2>
+	      <a href='<%= user_city_url(@user, city)%>'><%= city.name %></a>
+	      <% if city.be_attacked? %>
+  	        <span class='warn'>攻击警告</span>
+	      <% end %>
+	    </h2>
 	  <% end %>
 	  人口:<span><%= city.human %></span>
-	  食物:<span><%= city.food %></span>
+	  食物:<span><%= city.h_food %></span>
 	  金子:<span><%= city.gold %></span>
 	  税率:<span><%= city.tax_rate %></span>
 	  地标:<span><%= city.pos_x %>, <%= city.pos_y %></span>
+          长枪兵:<span><%= city.cqb_soliders.count %></span>
+	  弓箭手:<span><%= city.gjs_soliders.count %></span>
+	  骑兵:<span><%= city.qb_soliders.count %></span>
+	  <span class='btn'><%= link_to '训练士兵', new_city_solider_queue_url(city)%></span>
+	  <span class='btn'><%= link_to '发起进攻', new_city_fight_url(city) %></span>
 	</div>  
       <% end %>
     </div>

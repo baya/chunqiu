@@ -19,6 +19,11 @@
   description: "普通城市每72秒生产1金"
 
 'SimpleCity::TakeTax':
-  every: 1hr
+  every: 1h
   queue: tax
   description: "每小时对金子征税"
+
+'MediumCity::SolidersConsumeFood':
+  every: 1s
+  queue: consume_food
+  description: "士兵每秒消耗的食物"
