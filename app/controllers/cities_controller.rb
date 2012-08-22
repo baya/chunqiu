@@ -5,7 +5,7 @@ class CitiesController < ApplicationController
   before_filter :authenticate_user, :except => ['new', 'index']
 
   def index
-    @cities = @user.cities
+    @cities = @user.cities.order('created_at desc')
   end  
 
   def show
