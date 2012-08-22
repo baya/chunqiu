@@ -2,9 +2,13 @@
 ====
 
 数据库用的是Postgresql
+
 后台任务处理用的是redis + resque + resque-scheduler
+
 后台任务分为两种，一种是schedule job, 另一种是delayed job
+
 以固定的频率生产粮食，每小时对所有'金子'征税等，这些都是循环执行的，属于schedule job
+
 玩家训练一批士兵，这批士兵会在将来的某个时刻训练好，这个属于delayed job
 
 数据模型
